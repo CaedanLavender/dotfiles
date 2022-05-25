@@ -65,8 +65,8 @@ set laststatus=2
 
 " }}}
 
-call plug#begin()
-Plug 'morhetz/gruvbox'
+" call plug#begin()
+" Plug 'morhetz/gruvbox'
 
-call plug#end()
+" call plug#end()
 
