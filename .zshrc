@@ -10,6 +10,7 @@ export PATH="/opt/homebrew/sbin:$PATH"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
 ZSH_THEME="caedan"
 
 # Set list of themes to pick from when loading at random
@@ -165,11 +166,21 @@ alias c='code .'
 alias g='ghq-list-then-look'
 alias guii='gitui'
 alias gad='git add .'
-alias gim='git commit -m'
+# alias gim='git commit -m'
 # alias gam='git commit -am'
 alias gush='git push'
 alias gall='git pull --all'
 alias gat='git status'
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+function gitCommit() {
+   echo "Commit message:"
+   read commitMessage
+   echo "Commit message body:"
+   read commitExtraMessage
+   gitCommand="git commit -m \"${commitMessage}\" $([[ ! -z $commitExtraMessage ]] && echo "-m \"${commitExtraMessage}\"")"
+   eval $gitCommand
+}
 
+alias gim='gitCommit'
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
