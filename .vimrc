@@ -41,7 +41,8 @@ set laststatus=2
 set showmode
 set showcmd
 
-set cursorline
+autocmd InsertEnter,InsertLeave * set cul!
+
 
 set listchars=tab:▸\ ,eol:¬
 
