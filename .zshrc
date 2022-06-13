@@ -162,6 +162,9 @@ alias lst='exa -la --icons --git --no-user --group-directories-first -T -L 2'
 # CODE
 alias c='code .'
 
+# DOCKER
+alias dprune='docker system prune -f'
+
 # GIT
 alias g='ghq-list-then-look'
 alias guii='gitui'
