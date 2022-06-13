@@ -155,9 +155,9 @@ alias config='cd ~/.config/'
 alias restart='zsh'
 
 # EXA
-alias lsl='exa -la --icons --git --no-user --group-directories-first'
-alias lss='exa -l --icons --git --no-user --group-directories-first'
-alias lst='exa -la --icons --git --no-user --group-directories-first -T -L 2'
+alias lsl='exa -la  --git --no-user --group-directories-first'
+alias lss='exa -l  --git --no-user --group-directories-first'
+alias lst='exa -la --git --no-user --group-directories-first -T -L 2'
 
 # CODE
 alias c='code .'
