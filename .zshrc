@@ -174,6 +174,8 @@ alias gad='git add .'
 alias gush='git push'
 alias gall='git pull --all'
 alias gat='git status'
+alias gich='git switch -'
+alias groom='git remote prune origin'
 
 function gitCommit() {
    echo "Commit message:"
