@@ -147,6 +147,15 @@ alias root='cd /'
 alias user='cd ~'
 alias drive="cd '/Users/caedan/caedanlavender@gmail.com - Google Drive/My Drive'"
 alias dirc='pwd | pbcopy && echo Working directory was copied to the clipboard'
+alias fn='copyFileName'
+
+function copyFileName() {
+#   echo "Pattern:"
+#   read filename
+   filename=$1
+   echo "Copying: $(ls ${filename}*)"
+   eval $(ls ${filename}* | pbcopy)
+}
 
 # DOTFILES
 alias vimrc='vim ~/.vimrc'
@@ -176,6 +185,7 @@ alias gall='git pull --all'
 alias gat='git status'
 alias gich='git switch -'
 alias groom='git remote prune origin'
+alias gim='gitCommit'
 
 function gitCommit() {
    echo "Commit message:"
@@ -185,7 +195,5 @@ function gitCommit() {
    gitCommand="git commit -m \"${commitMessage}\" $([[ ! -z $commitExtraMessage ]] && echo "-m \"${commitExtraMessage}\"")"
    eval $gitCommand
 }
-
-alias gim='gitCommit'
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
