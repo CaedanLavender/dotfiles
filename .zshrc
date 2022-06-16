@@ -145,7 +145,7 @@ function ghq-list-then-look
 # GENERAL
 alias root='cd /'
 alias user='cd ~'
-alias drive="cd '/Users/caedan/caedanlavender@gmail.com - Google Drive/My Drive'"
+alias drive="cd '/Users/caedan/GD-Personal'"
 alias dirc='pwd | pbcopy && echo Working directory was copied to the clipboard'
 alias fn='copyFileName'
 
