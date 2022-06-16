@@ -159,9 +159,9 @@ function copyFileName() {
 
 # DOTFILES
 alias vimrc='vim ~/.vimrc'
-alias zshrc='vim ~/.zshrc'
+alias vimz='vim ~/.zshrc'
 alias config='cd ~/.config/'
-alias restart='zsh'
+alias rz='zsh'
 
 # EXA
 alias lsl='exa -la  --git --no-user --group-directories-first'
