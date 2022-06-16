@@ -5,6 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
