@@ -194,4 +194,26 @@ function gitCommit() {
    eval $gitCommand
 }
 
+# AWS
+alias asich=switchAWSProfile
+function switchAWSProfile() {
+   if [ "$AWS_PROFILE" = "developer" ]
+      then
+      export AWS_PROFILE=trustworks
+   elif [ "$AWS_PROFILE" = "trustworks" ]
+      then
+      export AWS_PROFILE=developer
+   else
+      AWS_PROFILE=developer
+      echo "AWS Profile was unset, now using: "$AWS_PROFILE
+      return 1
+   fi
+   echo "Now using AWS Profile: "$AWS_PROFILE
+}
+
+alias wicha=whichAWSProfile
+function whichAWSProfile() {
+   echo $AWS_PROFILE
+}
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
