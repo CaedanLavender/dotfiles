@@ -78,7 +78,6 @@ plugins=(
 	git
 	macos
 	zsh-interactive-cd
-# 	zsh-expand
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	)
@@ -179,8 +178,6 @@ alias dprune='docker system prune -f'
 alias g='ghq-list-then-look'
 alias guii='gitui'
 alias gad='git add .'
-# alias gim='git commit -m'
-# alias gam='git commit -am'
 alias gush='git push'
 alias gall='git pull --all'
 alias gat='git status'
