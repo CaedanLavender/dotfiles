@@ -216,4 +216,6 @@ function whichAWSProfile() {
    echo $AWS_PROFILE
 }
 
+alias build-latest-schema="bash ~/dev/.scripts/cw-get-prod.sh"
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
