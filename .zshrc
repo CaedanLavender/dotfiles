@@ -156,6 +156,8 @@ function copyFileName() {
    echo "Copying: $(ls ${filename}*)"
    eval $(ls ${filename}* | pbcopy)
 }
+# VIM
+alias v='nvim'
 
 # DOTFILES
 alias vimrc='vim ~/.vimrc'
@@ -216,6 +218,7 @@ function whichAWSProfile() {
    echo $AWS_PROFILE
 }
 
-alias build-latest-schema="bash ~/dev/.scripts/cw-get-prod.sh"
+alias build-latest-schema="bash ~/dev/.scripts/cw-get-prod-schema.sh"
+alias build-latest-dump="bash ~/dev/.scripts/cw-get-prod.sh"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
