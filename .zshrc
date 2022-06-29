@@ -114,12 +114,18 @@ source $ZSH/oh-my-zsh.sh
 export FZF_DEFAULT_OPTS='--layout=reverse --border --multi --ansi --exit-0'
 function ghq-list-then-look
 {
-  local selected=$(ghq list -p \
-    | fzf --height 90% --preview='find {} -depth 1 -type f | grep -i -e "readme.[(md)|(mkd)|(markdown)]" | head -1 | xargs head -$LINES')
+  local ghq_root=$(ghq root)
+  local selected=$(ghq list \
+    | fzf --height 90% \
+    --preview='find $(ghq root)/{} -depth 1 -type f | grep -i -e "readme.[(md)|(mkd)|(markdown)]" | head -1 | xargs head -$LINES' \
+        --preview-window down \
+        --color='hl+:green:italic,hl:green:italic,fg+:,bg+:' \
+        --color='pointer:blue,gutter:-1,header:blue:bold,prompt:green:bold,info:gray' \
+        --header "GHQ List")
 
   if [ -n "${selected}" ]; then
     clear
-    cd "${selected}"
+    cd "${ghq_root}/${selected}"
   fi
 }
 
