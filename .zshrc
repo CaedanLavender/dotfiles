@@ -114,12 +114,18 @@ source $ZSH/oh-my-zsh.sh
 export FZF_DEFAULT_OPTS='--layout=reverse --border --multi --ansi --exit-0'
 function ghq-list-then-look
 {
-  local selected=$(ghq list -p \
-    | fzf --height 90% --preview='find {} -depth 1 -type f | grep -i -e "readme.[(md)|(mkd)|(markdown)]" | head -1 | xargs head -$LINES')
+  local ghq_root=$(ghq root)
+  local selected=$(ghq list \
+    | fzf --height 90% \
+    --preview='find $(ghq root)/{} -depth 1 -type f | grep -i -e "readme.[(md)|(mkd)|(markdown)]" | head -1 | xargs head -$LINES' \
+        --preview-window down \
+        --color='hl+:green:italic,hl:green:italic,fg+:,bg+:' \
+        --color='pointer:blue,gutter:-1,header:blue:bold,prompt:green:bold,info:gray' \
+        --header "GHQ List")
 
   if [ -n "${selected}" ]; then
     clear
-    cd "${selected}"
+    cd "${ghq_root}/${selected}"
   fi
 }
 
@@ -156,6 +162,8 @@ function copyFileName() {
    echo "Copying: $(ls ${filename}*)"
    eval $(ls ${filename}* | pbcopy)
 }
+# VIM
+alias v='nvim'
 
 # DOTFILES
 alias vimrc='vim ~/.vimrc'
@@ -199,7 +207,7 @@ alias asich=switchAWSProfile
 function switchAWSProfile() {
    if [ "$AWS_PROFILE" = "developer" ]
       then
-      export AWS_PROFILE=trustworks
+      export AWS_PROFILE=production
    elif [ "$AWS_PROFILE" = "production" ]
       then
       export AWS_PROFILE=developer
@@ -216,6 +224,7 @@ function whichAWSProfile() {
    echo $AWS_PROFILE
 }
 
-alias build-latest-schema="bash ~/dev/.scripts/cw-get-prod.sh"
+alias build-latest-schema="bash ~/dev/.scripts/cw-get-prod-schema.sh"
+alias build-latest-dump="bash ~/dev/.scripts/cw-get-prod.sh"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
