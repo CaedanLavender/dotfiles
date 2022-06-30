@@ -200,7 +200,7 @@ function switchAWSProfile() {
    if [ "$AWS_PROFILE" = "developer" ]
       then
       export AWS_PROFILE=trustworks
-   elif [ "$AWS_PROFILE" = "trustworks" ]
+   elif [ "$AWS_PROFILE" = "production" ]
       then
       export AWS_PROFILE=developer
    else
