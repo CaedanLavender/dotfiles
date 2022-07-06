@@ -129,6 +129,28 @@ function ghq-list-then-look
   fi
 }
 
+function ghq-list-then-open-in-browser
+{
+  local ghq_root=$(ghq root)
+  local selected=$(ghq list \
+    | fzf --height 90% \
+    --preview='find $(ghq root)/{} -depth 1 -type f | grep -i -e "readme.[(md)|(mkd)|(markdown)]" | head -1 | xargs head -$LINES' \
+        --preview-window down \
+        --color='hl+:green:italic,hl:green:italic,fg+:,bg+:' \
+        --color='pointer:blue,gutter:-1,header:blue:bold,prompt:green:bold,info:gray' \
+        --header "GHQ List")
+
+  if [ -n "${selected}" ]; then
+    clear
+    local pattern="\[remote origin\].+url =.+:\/\/.+@(.+)\.git"
+    local directory="${ghq_root}/${selected}/.git/config"
+    echo $directory
+    echo $(cat $directory)
+    echo $found
+    #open http://$found
+  fi
+}
+
 # bindkey -v
 
 # RUNS NEOFETCH AUTOMATICALLY IN GIT REPOSITORIES
@@ -184,6 +206,7 @@ alias dprune='docker system prune -f'
 
 # GIT
 alias g='ghq-list-then-look'
+alias ggg='ghq-list-then-open-in-browser'
 alias guii='gitui'
 alias gad='git add .'
 alias gush='git push'
