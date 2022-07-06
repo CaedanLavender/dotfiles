@@ -142,12 +142,11 @@ function ghq-list-then-open-in-browser
 
   if [ -n "${selected}" ]; then
     clear
-    local pattern="\[remote origin\].+url =.+:\/\/.+@(.+)\.git"
-    local directory="${ghq_root}/${selected}/.git/config"
-    echo $directory
-    echo $(cat $directory)
-    echo $found
-    #open http://$found
+    local path_to_git_directory="${ghq_root}/${selected}"
+    local remote_url=$(git -C ${path_to_git_directory} config --get remote.origin.url)
+    local pattern=".+:\/\/.+@(.+)\.git"
+    local git_url=$([[ $remote_url =~ $pattern ]] && echo "${match[1]}")
+    open http://$git_url
   fi
 }
 
