@@ -228,3 +228,10 @@ alias build-latest-schema="bash ~/dev/.scripts/cw-get-prod-schema.sh"
 alias build-latest-dump="bash ~/dev/.scripts/cw-get-prod.sh"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# bun completions
+[ -s "/Users/caedan/.bun/_bun" ] && source "/Users/caedan/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/Users/caedan/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
