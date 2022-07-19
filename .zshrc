@@ -225,7 +225,18 @@ function gitCommit() {
 }
 
 # AWS
+alias awsp='setAWSProfile production'
+alias awsd='setAWSProfile developer'
+alias awsr='setAWSProfile root'
+alias awsprofiles='cat ~/.aws/credentials'
 alias asich=switchAWSProfile
+
+function setAWSProfile() {
+   local newProfile=$1
+   export AWS_PROFILE=$1
+   echo "AWS Profile is now "$AWS_PROFILE
+}
+
 function switchAWSProfile() {
    if [ "$AWS_PROFILE" = "developer" ]
       then
