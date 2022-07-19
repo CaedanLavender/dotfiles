@@ -223,6 +223,9 @@ function gitCommit() {
    gitCommand="git commit -m \"${commitMessage}\" $([[ ! -z $commitExtraMessage ]] && echo "-m \"${commitExtraMessage}\"")"
    eval $gitCommand
 }
+# Terraform
+alias t11=terraform_11
+alias t12=terraform_12
 
 # AWS
 alias awsp='setAWSProfile production'
