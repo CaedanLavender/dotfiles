@@ -224,8 +224,20 @@ function gitCommit() {
    eval $gitCommand
 }
 # Terraform
-alias t11=terraform_11
-alias t12=terraform_12
+alias t11='switchTerraformVersion 11'
+alias t12='switchTerraformVersion 12'
+
+function switchTerraformVersion() {
+    local target_version=$1
+    local path_to_terraform='/usr/local/bin/'
+    sudo cp "$path_to_terraform"terraform_"$target_version" "$path_to_terraform"terraform
+}
+
+function decodeError() {
+    echo "Enter encoded string:"
+    read encodedString
+    aws sts decode-authorization-message --encoded-message $encodedString | jq .context.action
+}
 
 # AWS
 alias awsp='setAWSProfile production'
@@ -233,7 +245,7 @@ alias awsd='setAWSProfile developer'
 alias awsr='setAWSProfile root'
 alias awsprofiles='cat ~/.aws/credentials'
 alias asich=switchAWSProfile
-
+alias decodeError='decodeError'
 function setAWSProfile() {
    local newProfile=$1
    export AWS_PROFILE=$1
